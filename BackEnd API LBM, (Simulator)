@@ -1,0 +1,59 @@
+BackEnd API LBM, (Simulator)
+EndPoints: 
+Domain name: https://devgat.aranuma.com/
+Return all IDs: [GET] {DomainName}/LBM/GetAllIDs
+Return all parameters of specific ID: [GET] {DomainName}/LBM/GetAllParameters ? id = ***
+
+SmartWatch Data Format:
+
+JSON
+{
+	Personel-ID: int
+	Signal-Level: Level: float
+	Time: DateTime
+  IsUnderground: bool
+	Height: byte
+   	
+  General-Condition: byte (NaN, Normal, Warning, Critical)
+  Battery:
+  {
+  Level: byte
+  Status: byte
+  }
+
+  Helth-Parameters:
+  {
+    Temperature:
+    {
+      Temperature (float), (Normal: 36.6-37.7, Danger: up 39.4 and under 36.6)
+      Status:
+    }
+    Blood-Pressure:
+    {
+      SYS:(byte) normal 120 mmHg,
+      DIA:(byte) normal 80 mmHg,
+      Status:
+    }
+    Blood-Oxygen:
+    {
+      BloodOxygen(byte): 95-100% Normal (unite percent)
+      Status:
+    }
+    Heart-beat
+    {
+      Heart-Beat(byte): between 60-100 / min (normal 80/min)
+      Status:
+    }
+  }
+
+  Gps-Location: 
+  {
+  Latitude(double): 30.363232386286573
+  Longitude(double): 48.27536900135166
+  }
+
+  Indoor-Location:
+  {
+    Area-ID: int,
+  }
+}
