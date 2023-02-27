@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
+import MapLocation from './MapLocation';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        Geolocalization
-      </header>
-    </div>
+    <>
+      <header className="App-header">Geolocalization</header>
+      <MapLocation />
+    </>
   );
 }
 
