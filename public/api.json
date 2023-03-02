@@ -4,8 +4,8 @@
     "IsUnderground": true,
     "General-Condition": 10,
     "Gps-Location": {
-      "Latitude": "30.363232386286573",
-      "Longitude": "48.27536900135166"
+      "Latitude": 30.363232386286573,
+      "Longitude": 48.27536900135166
     },
     "Indoor-Location": {
       "Area-ID": 30
@@ -16,8 +16,8 @@
     "IsUnderground": true,
     "General-Condition": 9,
     "Gps-Location": {
-      "Latitude": "30.353232386286591",
-      "Longitude": "48.2853691"
+      "Latitude": 30.353232386286591,
+      "Longitude": 48.2853691
     },
     "Indoor-Location": {
       "Area-ID": 30
@@ -28,8 +28,8 @@
     "IsUnderground": true,
     "General-Condition": 8,
     "Gps-Location": {
-      "Latitude": "30.453232386286591",
-      "Longitude": "48.3053691"
+      "Latitude": 30.453232386286591,
+      "Longitude": 48.3053691
     },
     "Indoor-Location": {
       "Area-ID": 30

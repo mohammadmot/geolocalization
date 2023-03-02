@@ -1,8 +1,11 @@
+import { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { LatLngExpression } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Icon } from 'leaflet';
-import api from './api.json';
+import axios from 'axios';
+
+const apiOptions = { baseURL: 'http://localhost:3000' };
 
 const myIcon = new Icon({
   iconUrl:
@@ -10,13 +13,28 @@ const myIcon = new Icon({
   iconSize: [25, 41],
 });
 
-const points: any[] = api.map((person) => {
-  return [person['Gps-Location'].Latitude, person['Gps-Location'].Longitude];
-});
-
-const center: LatLngExpression = points[0];
-
 const MapLocation = () => {
+  const [persons, setPersons] = useState<any>([]);
+
+  useEffect(() => {
+    axios
+      .get('/api.json', apiOptions)
+      .then((response) => {
+        setPersons(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const points: any[] = persons.map((person: any) => {
+    return [person['Gps-Location'].Latitude, person['Gps-Location'].Longitude];
+  });
+
+  const center: LatLngExpression = points[0] || [
+    30.363232386286573, 48.27536900135166,
+  ];
+
   return (
     <MapContainer
       className="Map"
