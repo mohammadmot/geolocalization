@@ -1,8 +1,13 @@
 import { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
 import { Icon } from 'leaflet';
 import axios from 'axios';
+
+import 'leaflet/dist/leaflet.css';
+import 'leaflet.markercluster/dist/MarkerCluster.css';
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
+
+import MarkerClusterGroup from './MarkerClusterGroup';
 
 const defaultCenter: [number, number] = [30.363232386286573, 48.27536900135166];
 
@@ -58,17 +63,19 @@ const MapLocation = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {persons.map(({ personelID, gpsLocation }: any, index: number) => {
-        return (
-          <Marker
-            key={index}
-            position={[gpsLocation.latitude, gpsLocation.longitude]}
-            icon={myIcon}
-          >
-            <Popup>{personelID}</Popup>
-          </Marker>
-        );
-      })}
+      <MarkerClusterGroup>
+        {persons.map(({ personelID, gpsLocation }: any, index: number) => {
+          return (
+            <Marker
+              key={index}
+              position={[gpsLocation.latitude, gpsLocation.longitude]}
+              icon={myIcon}
+            >
+              <Popup>{personelID}</Popup>
+            </Marker>
+          );
+        })}
+      </MarkerClusterGroup>
     </MapContainer>
   );
 };
